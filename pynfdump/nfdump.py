@@ -123,6 +123,9 @@ class Dumper:
             self.exec_path = os.path.join(self.exec_path, "nfdump")
         self.set_where()
         self.protocols = load_protocols()
+        # Fix issue:
+        # pynfdump.nfdump.NFDumpError: Open file 'xxx': bad magic: 0x6D69
+        os.chdir(self.datadir)
 
     def set_where(self, start=None, end=None, filename=None,dirfiles=None, stdin=False):
         """Set the timeframe of the nfdump query.
