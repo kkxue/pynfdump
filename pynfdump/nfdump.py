@@ -183,6 +183,8 @@ class Dumper:
             sources = ':'.join(self.sources)
             d = os.path.join(self.datadir, self.profile, sources)
             cmd.extend(['-M', d])
+        else:
+            cmd.extend(['-M', self._arg_escape(self.datadir)])
 
         if self.filename:
             cmd.extend(['-r', self.filename])
